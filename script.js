@@ -24,7 +24,7 @@ function writePassword() {
         var passwordLength = prompt ("How many characters would you like your password to contain?");
       
          passwordLength = parseInt(passwordLength);
-      
+//Checks for input and if it is a valid number between 8 - 128.      
          if (!passwordLength) {
            alert("Please enter a number");
            
@@ -32,7 +32,7 @@ function writePassword() {
          }else if (passwordLength < 8 || passwordLength > 128) {
            passwordLength = parseInt(prompt("Please choose a number between 8 and 128"));
          }
-      
+//Confirms characters to include in the password      
         var confrmUppercase = confirm("Click ok if you want uppercase characters included" );
         var confrmLowercase = confirm("Click ok if you want lowercase characters included");
         var confrmNumeric = confirm("Click ok if you want numbers included");
@@ -53,11 +53,12 @@ function writePassword() {
         if (confrmSpecial) {
           userPassword = userPassword.concat (specialChar);
         }
+//Checks for at least one option selected or cancels        
         while(confrmUppercase === false && confrmLowercase === false && confrmSpecial === false && confrmNumeric === false) {
           alert("You must choose at least one option");
           return;
         }
-      
+//Chooses random characters from the chosen options      
         for (var i =0; i < passwordLength; i++) {
           generatedPassword = generatedPassword + userPassword [Math.floor(Math.random() * userPassword.length )];
         }
